@@ -20,7 +20,7 @@ function getUsername() {
             );
             throw err;
         }
-        password = data;
+        username = data;
         getPassword();
     });
 }
@@ -60,10 +60,10 @@ function sendEmail(data, password) {
 
     // setup email data with unicode symbols
     let mailOptions = {
-        from: 'scott@sr28.net', // sender address
+        from: username, // sender address
         to:
             'mktresults@gmail.com, mktresults@hotmail.com, marketingresults@yahoo.com', // list of receivers
-        subject: 'Hello ✔', // Subject line
+        subject: 'Email Test ' + Date.now(), // Subject line
         text: 'Hello world?', // plain text body
         html: data // html body
     };
