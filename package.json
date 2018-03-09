@@ -1,0 +1,20 @@
+{
+    "name": "nodemailer",
+    "version": "1.0.0",
+    "description": "",
+    "main": "mail.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/sc0ttr0berts0n/basic-smtp-nodemailer.git"
+    },
+    "keywords": ["basic", "smtp", "nodemailer", "template"],
+    "author": "Scott Robertson",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/sc0ttr0berts0n/basic-smtp-nodemailer/issues"
+    },
+    "homepage": "https://github.com/sc0ttr0berts0n/basic-smtp-nodemailer#readme"
+}
