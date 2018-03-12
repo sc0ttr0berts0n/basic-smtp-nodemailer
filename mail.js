@@ -59,11 +59,12 @@ function sendEmail(data, password) {
     });
 
     // setup email data with unicode symbols
+    let dNow = new Date();
     let mailOptions = {
         from: username, // sender address
         to:
             'mktresults@gmail.com, mktresults@hotmail.com, marketingresults@yahoo.com', // list of receivers
-        subject: 'Email Test ' + Date.now(), // Subject line
+        subject: 'Email Test at ' + dNow.getHours() + ':' + dNow.getMinutes(), // Subject line
         text: 'Hello world?', // plain text body
         html: data // html body
     };
@@ -73,7 +74,17 @@ function sendEmail(data, password) {
         if (error) {
             return console.log(error);
         }
-        console.log('Message sent: %s', info.messageId);
+        console.log('');
+        console.log('███████╗███████╗███╗   ██╗████████╗██╗ ██╗  ');
+        console.log('██╔════╝██╔════╝████╗  ██║╚══██╔══╝╚██╗╚██╗ ');
+        console.log('███████╗█████╗  ██╔██╗ ██║   ██║    ╚██╗╚██╗');
+        console.log('╚════██║██╔══╝  ██║╚██╗██║   ██║    ██╔╝██╔╝');
+        console.log('███████║███████╗██║ ╚████║   ██║   ██╔╝██╔╝ ');
+        console.log('╚══════╝╚══════╝╚═╝  ╚═══╝   ╚═╝   ╚═╝ ╚═╝  ');
+        console.log('');
+
+        console.log('to: ' + mailOptions.to);
+        console.log('subject: ' + mailOptions.subject);
     });
 }
 
