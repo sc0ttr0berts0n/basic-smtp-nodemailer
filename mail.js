@@ -1,7 +1,8 @@
 'use strict';
 const nodemailer = require('nodemailer');
 const fs = require('fs');
-const pathToEmail = process.argv[2];
+const clientAbbreviation = process.argv[2];
+const pathToEmail = process.argv[3];
 const pathToPassword = '.password';
 let password = null;
 
@@ -64,7 +65,12 @@ function sendEmail(data, password) {
         from: username, // sender address
         to:
             'mktresults@gmail.com, mktresults@hotmail.com, marketingresults@yahoo.com', // list of receivers
-        subject: 'Email Test at ' + dNow.getHours() + ':' + dNow.getMinutes(), // Subject line
+        subject:
+            clientAbbreviation +
+            ' Email Test at ' +
+            dNow.getHours() +
+            ':' +
+            dNow.getMinutes(), // Subject line
         text: 'Hello world?', // plain text body
         html: data // html body
     };

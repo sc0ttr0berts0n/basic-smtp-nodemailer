@@ -10,11 +10,19 @@
         "type": "git",
         "url": "git+https://github.com/sc0ttr0berts0n/basic-smtp-nodemailer.git"
     },
-    "keywords": ["basic", "smtp", "nodemailer", "template"],
+    "keywords": [
+        "basic",
+        "smtp",
+        "nodemailer",
+        "template"
+    ],
     "author": "Scott Robertson",
     "license": "MIT",
     "bugs": {
         "url": "https://github.com/sc0ttr0berts0n/basic-smtp-nodemailer/issues"
     },
-    "homepage": "https://github.com/sc0ttr0berts0n/basic-smtp-nodemailer#readme"
+    "homepage": "https://github.com/sc0ttr0berts0n/basic-smtp-nodemailer#readme",
+    "dependencies": {
+        "nodemailer": "^4.6.4"
+    }
 }
