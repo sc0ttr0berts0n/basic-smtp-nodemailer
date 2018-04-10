@@ -17,7 +17,7 @@ function getUsername() {
     fs.readFile(pathToUsername, (err, data) => {
         if (err) {
             console.log(
-                'You probably need to add a ".password" file to doc root'
+                'You probably need to add a ".username" file to doc root'
             );
             throw err;
         }
