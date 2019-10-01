@@ -23,6 +23,7 @@
     },
     "homepage": "https://github.com/sc0ttr0berts0n/basic-smtp-nodemailer#readme",
     "dependencies": {
+        "dotenv": "^8.1.0",
         "nodemailer": "^4.6.4"
     }
 }

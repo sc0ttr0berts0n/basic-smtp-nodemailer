@@ -1,55 +1,23 @@
-'use strict';
+require('dotenv').config();
+
 const nodemailer = require('nodemailer');
 const fs = require('fs');
 const clientAbbreviation = process.argv[2];
 const pathToEmail = process.argv[3];
-const pathToPassword = '.password';
-let password = null;
-
-const pathToUsername = '.username';
-let username = null;
-
-function init() {
-    getUsername();
-}
-
-function getUsername() {
-    fs.readFile(pathToUsername, (err, data) => {
-        if (err) {
-            console.log(
-                'You probably need to add a ".username" file to doc root'
-            );
-            throw err;
-        }
-        username = data;
-        getPassword();
-    });
-}
-
-function getPassword() {
-    fs.readFile(pathToPassword, (err, data) => {
-        if (err) {
-            console.log(
-                'You probably need to add a ".password" file to doc root'
-            );
-            throw err;
-        }
-        password = data;
-        getHtmlFile();
-    });
-}
+const username = process.env.USERNAME;
+const password = process.env.PASSWORD;
 
 function getHtmlFile() {
     fs.readFile(pathToEmail, (err, data) => {
         if (err) {
             throw err;
         }
-        sendEmail(data, password);
+        sendEmail(data);
     });
 }
 
-function sendEmail(data, password) {
-    let transporter = nodemailer.createTransport({
+function sendEmail(data) {
+    const transporter = nodemailer.createTransport({
         host: 'box1023.bluehost.com',
         port: 465,
         secure: true, // upgrade later with STARTTLS
@@ -60,17 +28,19 @@ function sendEmail(data, password) {
     });
 
     // setup email data with unicode symbols
-    let dNow = new Date();
-    let mailOptions = {
+    const dNow = new Date();
+    const hours = dNow
+        .getHours()
+        .toString()
+        .padStart(2, '0');
+    const minutes = dNow
+        .getMinutes()
+        .toString()
+        .padStart(2, '0');
+    const mailOptions = {
         from: username, // sender address
-        to:
-            'mktresults@gmail.com, mktresults@hotmail.com, marketingresults@yahoo.com', // list of receivers
-        subject:
-            clientAbbreviation +
-            ' Email Test at ' +
-            dNow.getHours() +
-            ':' +
-            dNow.getMinutes(), // Subject line
+        to: process.env.MAIL_TO, // list of receivers
+        subject: `${clientAbbreviation} Email Test at ${hours}:${minutes}`,
         text: 'Hello world?', // plain text body
         html: data // html body
     };
@@ -92,6 +62,10 @@ function sendEmail(data, password) {
         console.log('to: ' + mailOptions.to);
         console.log('subject: ' + mailOptions.subject);
     });
+}
+
+function init() {
+    getHtmlFile();
 }
 
 init();
