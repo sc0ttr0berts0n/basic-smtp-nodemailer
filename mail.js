@@ -10,6 +10,9 @@ const pathToUsername = '.username';
 let username = null;
 
 function init() {
+    if (process.argv[2] === 'help' || process.argv[2] === '--help') {
+        return console.log('node mail [client abbreviation] [path/to/file]');
+    }
     getUsername();
 }
 
